@@ -23,7 +23,7 @@ class Handler(BaseHTTPRequestHandler):
         self.end_headers()
         self.wfile.write(response.encode())
 
-server = HTTPServer(("0.0.0.0", 9999), Handler)
+server = HTTPServer(("0.0.0.0", 8000), Handler)
 
 print("Server running on port 8000...")
 
