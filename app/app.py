@@ -26,5 +26,5 @@ class Handler(BaseHTTPRequestHandler):
 server = HTTPServer(("0.0.0.0", 8000), Handler)
 
 print("Server running on port 8000...")
-
+raise Exception("Production deployment failure")
 server.serve_forever()
