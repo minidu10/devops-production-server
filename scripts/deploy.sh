@@ -2,6 +2,9 @@
 
 set -e
 
+echo "🔍 Running preflight checks..."
+./scripts/preflight.sh
+
 PROJECT_DIR="/home/minidu/devops-project"
 
 cd "$PROJECT_DIR"
