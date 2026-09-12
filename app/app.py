@@ -1,9 +1,18 @@
 from http.server import BaseHTTPRequestHandler, HTTPServer
 import socket
+import logging
 
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s %(levelname)s %(message)s"
+)
+
+logger = logging.getLogger(__name__)
 class Handler(BaseHTTPRequestHandler):
     def do_GET(self):
         hostname = socket.gethostname()
+
+        logger.info("GET request received: %s", self.path)
 
         response = f"""
         <html>
@@ -23,8 +32,9 @@ class Handler(BaseHTTPRequestHandler):
         self.end_headers()
         self.wfile.write(response.encode())
 
+        logger.info("GET request completed: %s 200", self.path)
+
 server = HTTPServer(("127.0.0.1", 8000), Handler)
 
 print("Server running on port 8000...")
-raise Exception("Production deployment failure")
 server.serve_forever()
