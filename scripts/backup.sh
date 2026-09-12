@@ -23,3 +23,11 @@ echo "$BACKUP_FILE"
 echo
 echo "📦 Backup size:"
 du -h "$BACKUP_FILE"
+echo
+echo "🧹 Removing old backups..."
+
+ls -t "$BACKUP_DIR"/devops-app-*.tar.gz 2>/dev/null |
+    tail -n +6 |
+    xargs -r rm -f
+
+echo "✅ Backup cleanup complete"
